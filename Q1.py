@@ -22,7 +22,7 @@ class Book():
 class EBook(Book):
 
     def __init__(self, file_size, title, author, isbn, copies):
-        self.__init__(title, author, isbn, copies) = super().title, super().author, super().isbn, super().copies
+        super().__init__(title, author, isbn, copies)
         self.file_size = file_size
 
     def __str__(self, file_size):
@@ -35,13 +35,17 @@ class EBook(Book):
 class Library():
 
     def __init__(self):
-        self.__books = []
+        self.__books: list = []
 
     def add_book(self, book: Book):
         self.__books = book
 
-    # def find_books_by_author(self, author: str)-> str:
-    #     for i in self.__books:
+    def find_books_by_author(self, author: str)-> str:
+        for i in self.__books:
+            if author is in i:
+                return "Book is available"
+            else:
+                return "Book is not listed here"
 
     def __len__(self):
         return len(self.__books)
